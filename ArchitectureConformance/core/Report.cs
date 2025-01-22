@@ -1,7 +1,9 @@
+using ArchitectureConformance.models;
+
 namespace ArchitectureConformance.core;
 
-public static class Report
+public class Report (List<Pkg> pkgs)
 {
-    
+    public void OutputInconsistencies() {}
 
 }

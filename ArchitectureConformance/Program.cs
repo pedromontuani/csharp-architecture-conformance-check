@@ -39,8 +39,9 @@ static class Program
         var conformanceAnalyzer = new ConformanceAnalyzer(systemArchitecture);
         conformanceAnalyzer.Analyze();
         var processedPackages = conformanceAnalyzer.GetProcessedPackages();
-        
-        Console.WriteLine("chegou");
+
+        var report = new Report(processedPackages);
+        report.OutputInconsistencies();
     }
     
 
