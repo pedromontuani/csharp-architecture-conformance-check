@@ -53,8 +53,8 @@ public class Report (List<Pkg> pkgs)
         });
 
 
-        Console.WriteLine($"Total de divergências: {totalInconsistencies}");
-        Console.WriteLine($"Total de ausências: {totalAbsences}");
+        Console.WriteLine($"Total de divergências arquiteturais: {totalInconsistencies}");
+        Console.WriteLine($"Total de ausências arquiteturais: {totalAbsences}");
         
     }
     

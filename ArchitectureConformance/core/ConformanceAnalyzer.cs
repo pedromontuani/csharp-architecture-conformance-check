@@ -61,7 +61,7 @@ public class ConformanceAnalyzer(ConcurrentDictionary<string, Pkg> systemArchite
 
     private bool IsEntityWhitelisted(Entity entity)
     {
-        var excludedEntities = entity.parentPkg.mappedRelationship.excludedEntities;
+        var excludedEntities = entity.parentPkg.mappedRelationship.whitelistedEntities;
         var entityPkgName = SyntaxAnalyzer.GetPackageName(entity.classDeclaration);
         var fullEntityName = $"{entityPkgName}.{entity.classDeclaration.Identifier.Text}";
         
