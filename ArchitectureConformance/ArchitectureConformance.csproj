@@ -23,4 +23,8 @@
         <PackageReference Include="QuickGraph" Version="3.6.61119.7" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="output\" />
+    </ItemGroup>
+
 </Project>

@@ -1,9 +1,9 @@
 [
   {
     "namespaceRegex": "BTCPayServer.Controllers*",
-    "mustReference": [],
-    "cantReference": ["BTCPayServer.Models*"],
-    "excludedEntities": ["BTCPayServer.Controller*"]
+    "mustReference": ["BTCPayServer.Models*"],
+    "cantReference": ["BTCPayServer.Controllers*"],
+    "excludedEntities": []
   },
   {
     "namespaceRegex": "BTCPayServer.Models*",
@@ -14,7 +14,7 @@
   {
     "namespaceRegex": "BTCPayServer.Components.*",
     "mustReference": [],
-    "cantReference": [],
+    "cantReference": ["BTCPayServer.Models*"],
     "excludedEntities": []
   }
 ]

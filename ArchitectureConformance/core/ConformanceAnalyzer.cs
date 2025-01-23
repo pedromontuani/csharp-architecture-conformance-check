@@ -12,6 +12,7 @@ public class ConformanceAnalyzer(ConcurrentDictionary<string, Pkg> systemArchite
         var entities = systemArchitecture.SelectMany(pkg => pkg.Value.entities);
         Parallel.ForEach(entities, CheckForForbiddenReferences);
         Parallel.ForEach(systemArchitecture.Values, CheckForAbsentRelationships);
+        RemoveDuplications();
     }
 
     public List<Pkg> GetProcessedPackages()
@@ -65,5 +66,15 @@ public class ConformanceAnalyzer(ConcurrentDictionary<string, Pkg> systemArchite
         var fullEntityName = $"{entityPkgName}.{entity.classDeclaration.Identifier.Text}";
         
         return excludedEntities.Any(excluded => Regex.IsMatch(fullEntityName, excluded));
+    }
+    
+    private void RemoveDuplications()
+    {
+        Parallel.ForEach(systemArchitecture.Values, pkg =>
+        {
+            pkg.inconsistencies = new ConcurrentBag<Inconsistency>(pkg.inconsistencies.Distinct(new InconsistencyEqualityComparer()));
+            pkg.absences = new ConcurrentBag<string>(pkg.absences.Distinct());
+        });
+
     }
 }

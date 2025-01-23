@@ -31,16 +31,7 @@ public static class FilesManager
             Directory.Delete(path, true);
         }
     }
-
-    public static void SaveFile(string dir, string path, string content)
-    {
-        if (!Directory.Exists(dir))
-        { 
-            Directory.CreateDirectory(dir);
-        }
-        
-        File.WriteAllText(dir + "/" + path, content);
-    }
+    
     public static void SaveFile(string path, string content)
     {
         if (File.Exists(path))
@@ -49,6 +40,16 @@ public static class FilesManager
         }
         
         File.WriteAllText(path, content);
+    }
+    
+    public static void SaveFile(string dir, string path, string content)
+    {
+        if (!Directory.Exists(dir))
+        { 
+            Directory.CreateDirectory(dir);
+        }
+        
+        SaveFile(dir + "/" + path, content);
     }
     
     public static string GetFileName(string path)
